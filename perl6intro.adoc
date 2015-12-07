@@ -1,5 +1,5 @@
 = Perl 6 Introduction
-:description: A general introduction to Perl 6
+:description: Ogolne prowadzenie do Perla 6
 :Author: Naoum Hankache
 :keywords: perl6, perl 6, introduction, perl6intro, perl 6 introduction
 :Email: naoum@hankache.com
@@ -13,69 +13,120 @@
 
 This document is intended to give you a quick overview of the Perl 6 programming language. +
 For those who are new to Perl 6 it should get you up and running.
+Intencja niniejszego dokumentu jest krotki wprowadzenie do jezyka programowania Perl 6
+Nowym uzytkownikom powinno pozwolic na szybkie rozpoczecie pracy z Perlrm 6.
 
 Some sections of this document reference other (more complete and accurate) parts of the Perl 6 documentation.
 You should read them if you need more information on a specific subject.
+Niektore paragrafy niniejszego dokumentu odwoluja sie do (bardziej kompletnych lub dokladniejszych) czesci dokumentacji Perl 6. Powinienes je przeczytac jesli potrzebujesz wiecej informacji na konkretny temat.
 
 Throughout this document, you will find examples for most discussed topics.
 To better understand them, take the time to reproduce all examples.
+Dokument zawiera wiele przykladow ilustrujacych omawiane tematy. Dla lepszego ich
+zrozumienia poswiecenie chwili czasu na reprodukcje przykladow jest wysoce wskazane.
+
 
 .License
 This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. +
 To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.
+Ta praca jest objeta licencja Creative Commons Attribution-ShareAlike 4.0 International.
+Dla zapoznania sie z tekstem licencji odwiedz http://creativecommons.org/licenses/by-sa/4.0/
+
 
 .Contribution
 If you would like to contribute to this document head over to: +
+jesli chcialbys przyczynic sie do rozwoju dokumentu odwiedz:
 http://github.com/hankache/perl6intro
 
+
+
 :sectnums:
-== Introduction
-=== What is Perl 6
+== Introduction Wprowadzenie
+=== What is Perl 6 Co to jest Perl 6
 Perl 6 is a high-level, general-purpose, gradually typed language.
+Perl 6 jest to jezyk programowania wysokiego poziomu, ogolnego przeznaczenia ze stopniowym typowaniem.
 Perl 6 is multi-paradigmatic. It supports Procedural, Object Oriented and Functional programming.
+Perl 6 jest wielo-paradygmatowy. Pozwala na programowanie proceduralne, obiektowe oraz funkcyjne.
 
 .Perl 6 motto:
 * TMTOWTDI (Pronounced Tim Toady): There is more than one way to do it.
+* TMTOWTDI (wymawianie: Tim Toady): Test wiecej niz jeden sposob na osiagniecie celu
 * Easy things should stay easy, hard things should get easier, and impossible things should get hard.
+* Proste rzeczy powinny pozostac prostymi, ciezkie powinny stac sie prostszymi a niemozliwe trudnymi.
 
-=== Jargon
+=== Jargon Zargon
 Perl 6: Is a language specification with a test suite. Implementations that pass the specification test suite are considered Perl 6. +
+Perl6: Specyfikacja jezyka programowania wraz z zestawem testow. Implementacja, ktora jest zgodna z zestawem testow jest uwazana za Perl 6.
 Rakudo: Is a compiler for Perl 6. +
+Rakudo: Kompiler jezyka Perl 6.
 Rakudobrew: Is a Perl 6 installation manager. +
+Rakudobrew: 
 Panda: Is a Perl 6 module installer.
+Panda: Instalator modulow jezyka Perl 6.
+
 
 === Installing Perl 6
+=== Instalacja Perla 6
 .Linux
 . Install Rakudobrew: https://github.com/tadzik/rakudobrew
+. Zainstaluj Rakudobrew: https://github.com/tadzik/rakudobrew
 
 . Install Rakudo: Type the following command in the terminal `rakudobrew build moar`
+. Zainstaluj Rakudo: Wstukaj nastepujaca komede w terminalu: 'rakudobrew build moar`
 
 . Install Panda: Type the following command in the terminal `rakudobrew build-panda`
+. Zainstaluj Pande: Wstukaj nastepujaca komende w terminalu: 'rakudobrew build-panda`
 
 .OSX
 Follow the same steps listed for installing on Linux +
+Wykonaj te same kroki jak w przypadku instalowania na Linuxie
+
 OR +
+Lub
+
 Install with homebrew: `brew install rakudo-star`
+Zainstaluj uzywajac homebrew: 'brew install rakudo-star`
 
 .Windows
 . Download the latest installer (file with .MSI extension) from http://rakudo.org/downloads/star/ +
+. Sciagnij najnowszy instalator (plik z rozszerzeniem .MSI) z http://rakudo.org/downloads/star/
+
 If your system architecture is 32-bit, download the x86 file if it's 64-bit download the x86_64 file.
+Jesli architektura twojego systemu jest 32-bitowa sciagnij plik zawierajacy 'x86', natomiast jesli jest 64-bitowa
+to plik zawierajacy 'x86_64'.
+
 . After installation add C:\rakudo\bin to your PATH
- 
+. Po instalacji dodaj C:\rakudo\bin do zmiennej srodowiskowej PATH
+
 .Docker
 . Get the official Docker image `docker pull rakudo-star`
-. Then run a container with the image `docker run -it rakudo-star`
+. Pobierz oficjalny obraz Dockera 'docker pull rakudo-star`
 
-=== Running Perl 6 code
-Running Perl 6 code can be done using the REPL (Read-Eval-Print Loop). +
+. Then run a container with the image `docker run -it rakudo-star`
+. Nastepnie uruchom kontener z obrazem 'docker run -it rakudo-star`
+
+
+=== Running Perl 6 code  Uruchamianie kodu Perla 6
+Running Perl 6 code can be done using the konsoli REPL (Read-Eval-Print Loop). +
+Do urochomienie kodu Perla 6 mozna uzyc REPL (Read-Eval-Print Loop).
+
 Within the terminal, type `perl6`, write your code and hit [Enter] +
+W terminalu nalezy wpisac 'perl6`, wpisac kod do uruchomienia i wcisnac [Enter]
 
 Alternatively, write your code in a file, save it and run it. +
+Mozna tez zapisac kod w pliku i nastepnie go uruchomic.
 It is recommended that Perl 6 files have a  `.pl6` extension. +
+Rekomendowanym rozszerzeniem dla plikow Perla 6 jest '.pl6'.
+
 Run the file from the terminal using the following syntax: `perl6 filename.pl6`
+Uruchom plik z poziomu terminala uzywajac skladni: 'perl6 nazwapliku.pl6`
 
 The REPL is mostly used for trying a specific piece of code, typically a single line. +
+REPL jest przewaznie uzywany do wyprubowania konkretnego kawalka kodu, przewaznie jednoliniowego.
+
 For programs with more than a single line it is recommended to store them in a file and then run them.
+Dla programow zawierajacych wiecej niz jedna linie wskazane jest zachowanie ich w pliku przed uruchomieniem.
+
 
 === Editors
 Since most of the time we will be writing and storing our Perl 6 programs in files, we should have
